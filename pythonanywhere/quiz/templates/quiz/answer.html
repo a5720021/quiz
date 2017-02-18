@@ -1,0 +1,22 @@
+<h1>Quiz about Prayut.</h1>
+
+<form action="{% url 'quiz:result'%}" method="post">
+{% csrf_token %}
+{% for data in question.all %}
+   {{ forloop.counter }}. 
+   {{data.question_text}}
+   {% for choice in data.choice_set.all %}
+      <br>
+       <input type="radio" name="{{data.id}}" id="choice{{forloop.counter}}" value="{{choice.answer}}">
+      {{choice.choice_text}}
+   {% endfor %}
+<br>
+{% endfor %}
+<br>
+Enter your name.(Required)
+<br>
+<input type="text" name="uname" required/>
+<br>
+<input type="Submit" value="Submit your answer." />
+<br>
+</form>

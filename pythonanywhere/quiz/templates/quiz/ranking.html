@@ -1,0 +1,29 @@
+<h1>Ranking of users.</h1>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 15px;
+}
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr>
+    <th>Ranking</th>
+    <th>Name</th>
+    <th>Score</th> 
+  </tr>
+{% for user in user.all %}
+  <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{user.user_name}}</td>
+    <td>{{user.score}}</td>
+  </tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
+<a href="{% url 'quiz:index' %}">กลับหน้าแรก<br>

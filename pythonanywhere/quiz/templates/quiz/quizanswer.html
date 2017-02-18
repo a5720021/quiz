@@ -1,0 +1,33 @@
+<h1>Answer of all questions.</h1>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 15px;
+}
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr>
+    <th>Question_id</th>
+    <th>Question</th>
+    <th>Answer</th> 
+  </tr>
+{% for data in question.all %}
+  <tr>
+    <td>{{data.id}}</td>
+    <td>{{data.question_text}}</td>
+   {% for choice in data.choice_set.all %}
+       {% if choice.answer %}
+           <td>{{choice.choice_text}}<br>
+       {% endif %}
+   {% endfor %}
+  </td></tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
+<a href="{% url 'quiz:index' %}">กลับหน้าแรก<br>
